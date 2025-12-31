@@ -129,19 +129,19 @@ export function Containers() {
         <Box width={8}>
           <Text bold dimColor>CTID</Text>
         </Box>
-        <Box width={20}>
+        <Box width={30}>
           <Text bold dimColor>NAME</Text>
         </Box>
-        <Box width={12}>
+        <Box width={16}>
           <Text bold dimColor>NODE</Text>
         </Box>
-        <Box width={8}>
+        <Box width={10}>
           <Text bold dimColor>CPU</Text>
         </Box>
-        <Box width={12}>
+        <Box width={14}>
           <Text bold dimColor>MEM</Text>
         </Box>
-        <Box width={10}>
+        <Box width={14}>
           <Text bold dimColor>UPTIME</Text>
         </Box>
       </Box>
@@ -154,19 +154,32 @@ export function Containers() {
 
         return (
           <Box key={`${container.node}-${container.vmid}`}>
-            <Text inverse={isSelected}>
-              <Text>{isLoading ? "◌ " : ""}</Text>
-              {!isLoading && <StatusBadge status={container.status} showLabel={false} />}
-              <Text> </Text>
-            </Text>
-            <Text inverse={isSelected}>{String(container.vmid).padEnd(7)}</Text>
-            <Text inverse={isSelected}>{truncate(container.name || `CT ${container.vmid}`, 18).padEnd(19)}</Text>
-            <Text inverse={isSelected} dimColor={!isSelected}>{container.node.padEnd(11)}</Text>
-            <Text inverse={isSelected}>{`${cpuPercent}%`.padEnd(7)}</Text>
-            <Text inverse={isSelected}>{formatBytes(container.mem).padEnd(11)}</Text>
-            <Text inverse={isSelected} dimColor={!isSelected}>
-              {container.status === "running" ? formatUptime(container.uptime) : "-"}
-            </Text>
+            <Box width={4}>
+              <Text inverse={isSelected}>
+                {isLoading ? "◌ " : <StatusBadge status={container.status} showLabel={false} />}
+                {" "}
+              </Text>
+            </Box>
+            <Box width={8}>
+              <Text inverse={isSelected}>{container.vmid}</Text>
+            </Box>
+            <Box width={30}>
+              <Text inverse={isSelected}>{truncate(container.name || `CT ${container.vmid}`, 28)}</Text>
+            </Box>
+            <Box width={16}>
+              <Text inverse={isSelected} dimColor={!isSelected}>{container.node}</Text>
+            </Box>
+            <Box width={10}>
+              <Text inverse={isSelected}>{cpuPercent}%</Text>
+            </Box>
+            <Box width={14}>
+              <Text inverse={isSelected}>{formatBytes(container.mem)}</Text>
+            </Box>
+            <Box width={14}>
+              <Text inverse={isSelected} dimColor={!isSelected}>
+                {container.status === "running" ? formatUptime(container.uptime) : "-"}
+              </Text>
+            </Box>
           </Box>
         );
       })}

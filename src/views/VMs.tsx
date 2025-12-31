@@ -128,19 +128,19 @@ export function VMs() {
         <Box width={8}>
           <Text bold dimColor>VMID</Text>
         </Box>
-        <Box width={20}>
+        <Box width={30}>
           <Text bold dimColor>NAME</Text>
         </Box>
-        <Box width={12}>
+        <Box width={16}>
           <Text bold dimColor>NODE</Text>
         </Box>
-        <Box width={8}>
+        <Box width={10}>
           <Text bold dimColor>CPU</Text>
         </Box>
-        <Box width={12}>
+        <Box width={14}>
           <Text bold dimColor>MEM</Text>
         </Box>
-        <Box width={10}>
+        <Box width={14}>
           <Text bold dimColor>UPTIME</Text>
         </Box>
       </Box>
@@ -153,19 +153,32 @@ export function VMs() {
 
         return (
           <Box key={`${vm.node}-${vm.vmid}`}>
-            <Text inverse={isSelected}>
-              <Text>{isLoading ? "◌ " : ""}</Text>
-              {!isLoading && <StatusBadge status={vm.status} showLabel={false} />}
-              <Text> </Text>
-            </Text>
-            <Text inverse={isSelected}>{String(vm.vmid).padEnd(7)}</Text>
-            <Text inverse={isSelected}>{truncate(vm.name || `VM ${vm.vmid}`, 18).padEnd(19)}</Text>
-            <Text inverse={isSelected} dimColor={!isSelected}>{vm.node.padEnd(11)}</Text>
-            <Text inverse={isSelected}>{`${cpuPercent}%`.padEnd(7)}</Text>
-            <Text inverse={isSelected}>{formatBytes(vm.mem).padEnd(11)}</Text>
-            <Text inverse={isSelected} dimColor={!isSelected}>
-              {vm.status === "running" ? formatUptime(vm.uptime) : "-"}
-            </Text>
+            <Box width={4}>
+              <Text inverse={isSelected}>
+                {isLoading ? "◌ " : <StatusBadge status={vm.status} showLabel={false} />}
+                {" "}
+              </Text>
+            </Box>
+            <Box width={8}>
+              <Text inverse={isSelected}>{vm.vmid}</Text>
+            </Box>
+            <Box width={30}>
+              <Text inverse={isSelected}>{truncate(vm.name || `VM ${vm.vmid}`, 28)}</Text>
+            </Box>
+            <Box width={16}>
+              <Text inverse={isSelected} dimColor={!isSelected}>{vm.node}</Text>
+            </Box>
+            <Box width={10}>
+              <Text inverse={isSelected}>{cpuPercent}%</Text>
+            </Box>
+            <Box width={14}>
+              <Text inverse={isSelected}>{formatBytes(vm.mem)}</Text>
+            </Box>
+            <Box width={14}>
+              <Text inverse={isSelected} dimColor={!isSelected}>
+                {vm.status === "running" ? formatUptime(vm.uptime) : "-"}
+              </Text>
+            </Box>
           </Box>
         );
       })}

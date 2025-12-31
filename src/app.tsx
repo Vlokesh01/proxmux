@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useApp, useInput } from "ink";
+import { useApp, useInput, useStdout } from "ink";
 import { Layout } from "./components/Layout.tsx";
 import type { View } from "./components/Sidebar.tsx";
 import { Dashboard } from "./views/Dashboard.tsx";
@@ -17,8 +17,21 @@ const views: View[] = ["dashboard", "vms", "containers", "storage"];
 
 export function App({ config }: AppProps) {
   const { exit } = useApp();
+  const { stdout } = useStdout();
   const [currentView, setCurrentView] = useState<View>("dashboard");
   const [connected, setConnected] = useState(false);
+  const [terminalHeight, setTerminalHeight] = useState(stdout?.rows || 24);
+
+  // Update height when terminal resizes
+  useEffect(() => {
+    const handleResize = () => {
+      setTerminalHeight(stdout?.rows || 24);
+    };
+    stdout?.on("resize", handleResize);
+    return () => {
+      stdout?.off("resize", handleResize);
+    };
+  }, [stdout]);
 
   // Test connection on mount
   useEffect(() => {
@@ -70,6 +83,7 @@ export function App({ config }: AppProps) {
       onViewChange={setCurrentView}
       connected={connected}
       host={config.host}
+      height={terminalHeight}
     >
       {renderView()}
     </Layout>

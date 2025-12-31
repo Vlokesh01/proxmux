@@ -8,6 +8,7 @@ interface LayoutProps {
   onViewChange: (view: View) => void;
   connected: boolean;
   host: string;
+  height: number;
   children: React.ReactNode;
 }
 
@@ -16,10 +17,11 @@ export function Layout({
   onViewChange,
   connected,
   host,
+  height,
   children,
 }: LayoutProps) {
   return (
-    <Box flexDirection="column" height="100%">
+    <Box flexDirection="column" height={height}>
       <Box flexGrow={1}>
         <Sidebar currentView={currentView} onViewChange={onViewChange} />
         <Box flexGrow={1} flexDirection="column" paddingX={1}>

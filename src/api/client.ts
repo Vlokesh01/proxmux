@@ -25,12 +25,13 @@ export class ProxmoxClient {
   ): Promise<T> {
     const url = `${this.baseUrl}/api2/json${path}`;
 
+    const headers: Record<string, string> = {
+      Authorization: this.authHeader,
+    };
+
     const options: RequestInit = {
       method,
-      headers: {
-        Authorization: this.authHeader,
-        "Content-Type": "application/json",
-      },
+      headers,
       // Skip SSL verification for self-signed certs (common in Proxmox)
       // @ts-expect-error - Bun supports this option
       tls: {
@@ -39,7 +40,13 @@ export class ProxmoxClient {
     };
 
     if (body) {
-      options.body = JSON.stringify(body);
+      // Proxmox expects form-urlencoded for POST/PUT
+      headers["Content-Type"] = "application/x-www-form-urlencoded";
+      const params = new URLSearchParams();
+      for (const [key, value] of Object.entries(body)) {
+        params.append(key, String(value));
+      }
+      options.body = params.toString();
     }
 
     const response = await fetch(url, options);
@@ -53,6 +60,9 @@ export class ProxmoxClient {
           `  - Token ID: just the name (e.g., proxmux)\n` +
           `  - Ensure "Privilege Separation" is unchecked in Proxmox`
         );
+      }
+      if (response.status === 501) {
+        throw new Error(`Operation not supported (501)`);
       }
       throw new Error(`Proxmox API error: ${response.status} - ${text}`);
     }

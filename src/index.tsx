@@ -90,7 +90,7 @@ Or set environment variables:
 // Initialize API client before rendering
 initClient(config);
 
-// Render the app with full input handling
+// Render the app
 const { waitUntilExit } = render(<App config={config} />);
 
 await waitUntilExit();

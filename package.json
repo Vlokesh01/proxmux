@@ -1,6 +1,6 @@
 {
   "name": "proxmux",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Terminal UI for managing Proxmox VE",
   "author": "Roshan Kumaraswamy",
   "license": "MIT",

